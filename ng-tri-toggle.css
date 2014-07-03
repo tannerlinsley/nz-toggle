@@ -1,0 +1,46 @@
+.tri-toggle-wrap {
+    width: 56px;
+    height: 30px;
+    display: inline-block;
+    background-color: #CCC;
+    border-radius: 25px;
+    position:relative;
+    -webkit-transition:background-color .2s ease;
+    transition:background-color .2s ease;
+    cursor:pointer;
+}
+.tri-toggle-wrap.true {
+    background-color:#68C527;
+}
+.tri-toggle-wrap.false {
+    background-color:#ff4d35;
+}
+.tri-toggle-false {
+    position:absolute;
+    left:0;
+    width:50%;
+    height:100%;
+}
+.tri-toggle-true {
+    position:absolute;
+    right:0;
+    width:50%;
+    height:100%;
+}
+.tri-toggle-handle {
+    width:24px;
+    height:24px;
+    border-radius:100%;
+    background-color:white;
+    position:absolute;
+    top:3px;
+    left:16px;
+    -webkit-transition:all .15s ease-out;
+    transition:all .15s ease-out;
+}
+.tri-toggle-wrap.true .tri-toggle-handle {
+    left:29px;
+}
+.tri-toggle-wrap.false .tri-toggle-handle {
+    left:3px;
+}
