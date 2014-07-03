@@ -1,6 +1,11 @@
 # ng-Tri-Toggle
 
-Triple-State Toggle AngularJS Directive
+__Triple-State Toggle AngularJS Directive__
+
+1. Sometimes a checkbox should have more than 2 options.
+2. Indeterminate checkboxes are cool for nested checklists, but simply a fancy way to say `false`.
+
+So, Here is an elegant solution for a three-state toggle switch inspired by mobile touch toggles.
 
 ## Get Started
 
