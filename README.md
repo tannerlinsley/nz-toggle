@@ -8,13 +8,17 @@ Triple-State Toggle AngularJS Directive
 
 ## Using the directive
 
-`<tri-toggle ng-change="myFunction()" ng-model="value"></tri-toggle> 
-//Default Values : true-val = 1, false-val = 0, no-val = null;`
+```html
+<tri-toggle ng-change="myFunction()" ng-model="value"></tri-toggle> 
+<!-- Default Values : true-val = 1, false-val = 0, no-val = null; -->
+```
 
-`<tri-toggle ng-change="myFunction()" ng-model="value" ng-true-val="'myString'" ng-false-val="0" ng-no-val="-1"></tri-toggle> 
-//Custom Values : true-val = true, false-val = -1, no-val = 'Nothing Selected!'`
+```html
+<tri-toggle ng-change="myFunction()" ng-model="value" ng-true-val="'myString'" ng-false-val="0" ng-no-val="-1"></tri-toggle> 
+<!-- Custom Values : true-val = true, false-val = -1, no-val = 'Nothing Selected!' -->
+```
 
-_Note: `ng-change` callback function is not a watch, and will only be triggered on user interaction.  Make your own watch to monitor the model more closely. :)
+__Note__: `ng-change` _callback function is not a watch, and will only be triggered on user interaction.  Make your own watch to monitor the model more closely. :)_
 
 ## License
 
