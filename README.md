@@ -9,7 +9,16 @@ So, Here is an elegant solution for a three-state toggle switch inspired by mobi
 
 ## Get Started
 
+Install Via Bower
+
 `bower install -S ngTriToggle`
+
+Include Files
+
+```html
+<link rel="stylesheet" type="text/css" href="/assets/bower_components/ngTriToggle/ng-tri-toggle.css" />
+<script type="text/javascript" src="/assets/bower_components/ngTriToggle/ng-tri-toggle.js"></script>
+```
 
 ## Using the directive
 
