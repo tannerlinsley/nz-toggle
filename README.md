@@ -9,12 +9,23 @@ Triple-State Toggle AngularJS Directive
 ## Using the directive
 
 ```html
-<tri-toggle ng-change="myFunction()" ng-model="value"></tri-toggle> 
+<tri-toggle 
+  ng-change="myFunction()" 
+  ng-model="value">
+</tri-toggle> 
+
 <!-- Default Values : true-val = 1, false-val = 0, no-val = null; -->
 ```
 
 ```html
-<tri-toggle ng-change="myFunction()" ng-model="value" ng-true-val="'myString'" ng-false-val="0" ng-no-val="-1"></tri-toggle> 
+<tri-toggle 
+  ng-change="myFunction()" 
+  ng-model="value" 
+  ng-true-val="'myString'" 
+  ng-false-val="0" 
+  ng-no-val="-1">
+</tri-toggle> 
+
 <!-- Custom Values : true-val = true, false-val = -1, no-val = 'Nothing Selected!' -->
 ```
 
