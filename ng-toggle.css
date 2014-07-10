@@ -91,6 +91,7 @@
     border-radius: 12px;
     opacity:0;
     pointer-events:none;
+    white-space:nowrap;
 }
 .ng-toggle-wrap:hover .ng-toggle-tooltip {
     opacity:1;
