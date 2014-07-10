@@ -1,49 +1,50 @@
-# ng-Tri-Toggle
+# ng-toggle
 
-__Triple-State Toggle AngularJS Directive__
+__Double and Triple-State Toggle AngularJS Directives__
 
-1. Sometimes a checkbox should have more than 2 states.
-2. Indeterminate checkboxes are cool for nested checklists, but simply a fancy way to say `false`.
+1. Toggles should be prettier, and not restricted to checkbox functionality.
+2. Sometimes a checkbox should have more than 2 states.
+3. Indeterminate checkboxes are cool for nested checklists, but simply a fancy way to say `false`.
 
-So, Here is an elegant solution for a three-state toggle switch inspired by mobile touch toggles.
+So, Here is an elegant solution for regular and three-state toggle switches inspired by mobile touch toggles.
 
 ## Get Started
 
 Install Via Bower
 
-`bower install -S ngTriToggle`
+`bower install -S ngToggle`
 
 Include Files
 
 ```html
-<link rel="stylesheet" type="text/css" href="/assets/bower_components/ngTriToggle/ng-tri-toggle.css" />
-<script type="text/javascript" src="/assets/bower_components/ngTriToggle/ng-tri-toggle.js"></script>
+<link rel="stylesheet" type="text/css" href="/assets/bower_components/ngTriToggle/ng-toggle.css" />
+<script type="text/javascript" src="/assets/bower_components/ngTriToggle/ng-toggle.js"></script>
 ```
 
 ## Using the directive
 
 ```html
-<tri-toggle 
+<ng-toggle 
+  tri-toggle 
   ng-change="myFunction()" 
   ng-model="value">
-</tri-toggle> 
+</ng-toggle> 
 
 <!-- Default Values : true-val = 1, false-val = 0, no-val = null; -->
 ```
 
 ```html
-<tri-toggle 
+<ng-toggle 
+  tri-toggle 
   ng-change="myFunction()" 
   ng-model="value" 
   ng-true-val="'myString'" 
   ng-false-val="0" 
   ng-no-val="-1">
-</tri-toggle> 
+</ng-toggle> 
 
 <!-- Custom Values : true-val = true, false-val = -1, no-val = 'Nothing Selected!' -->
 ```
-
-__Note__: `ng-change` _callback function is not a watch, and will only be triggered on user interaction.  Make your own watch to monitor the model more closely. :)_
 
 ## License
 
