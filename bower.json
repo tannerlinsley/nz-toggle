@@ -1,26 +1,27 @@
 {
-  "name": "ng-Tri-Toggle",
-  "main": "ng-Tri-Toggle.js",
-  "version": "1.0.0",
-  "homepage": "https://github.com/tannerlinsley/ng-Tri-Toggle",
-  "authors": [
-    "tannerlinsley"
-  ],
-  "description": "Triple-State Toggle AngularJS Directive",
-  "keywords": [
-    "toggle",
-    "angularJS",
-    "indeterminate",
-    "checkbox",
-    "triple",
-    "state"
-  ],
-  "license": "MIT",
-  "ignore": [
-    "**/.*",
-    "node_modules",
-    "bower_components",
-    "test",
-    "tests"
-  ]
+    "name": "ng-toggle",
+    "main": "ng-toggle.js",
+    "version": "1.2.0",
+    "homepage": "https://github.com/tannerlinsley/ng-toggle",
+    "authors": [
+        "tannerlinsley"
+    ],
+    "description": "Double and Triple-State Toggle AngularJS Directives",
+    "keywords": [
+        "toggle",
+        "angularJS",
+        "indeterminate",
+        "checkbox",
+        "double",
+        "triple",
+        "state"
+    ],
+    "license": "MIT",
+    "ignore": [
+        "**/.*",
+        "node_modules",
+        "bower_components",
+        "test",
+        "tests"
+    ]
 }
