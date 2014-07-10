@@ -18,7 +18,7 @@ ngTriToggle
                 ngFalseTip: '=?',
                 ngNullTip: '=?',
             },
-            template: '<div class="ng-toggle-wrap" ng-style="styleWrap" ng-class="{\'vertical\': vertical}"><div class="ng-toggle-switch" ng-style="styleSwitch" ng-class="{\'true\': val==ngTrueVal, \'false\': val==ngFalseVal}" ng-click="toggle()"><div class="ng-toggle-false"></div><div class="ng-toggle-true"></div><div class="ng-toggle-handle" ng-style="styleHandle"></div></div><div class="ng-toggle-tooltip" ng-show="tooltip"><span ng-class="{\'active\': showTooltip1}">{{tooltip1}}&nbsp;</span><br ng-show="triToggle"><span ng-class="{\'active\': showTooltip2}" ng-show="triToggle">{{tooltip2}}&nbsp;</span><br><span ng-class="{\'active\': showTooltip3}">{{tooltip3}}&nbsp;</span></div></div>',
+            template: '<div class="ng-toggle-wrap" ng-style="styleWrap" ng-class="{\'vertical\': vertical}"><div class="ng-toggle-switch" ng-style="styleSwitch" ng-class="{\'true\': val==ngTrueVal, \'false\': val==ngFalseVal}" ng-click="toggle()"><div class="ng-toggle-false"></div><div class="ng-toggle-true"></div><div class="ng-toggle-handle" ng-style="styleHandle"></div></div><div class="ng-toggle-tooltip" ng-show="tooltip"><span ng-class="{\'active\': showTooltip1}"><span ng-show="tooltip1">&bull;&nbsp;</span>{{tooltip1}}&nbsp;</span><br ng-show="triToggle"><span ng-class="{\'active\': showTooltip2}" ng-show="triToggle"><span ng-show="tooltip2">&bull;&nbsp;</span>{{tooltip2}}&nbsp;</span><br><span ng-class="{\'active\': showTooltip3}"><span ng-show="tooltip3">&bull;&nbsp;</span>{{tooltip3}}&nbsp;</span></div></div>',
             link: function(scope, element, attrs) {
 
                 /* Catch Config, allow attr overrides */
