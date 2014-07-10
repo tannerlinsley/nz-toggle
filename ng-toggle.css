@@ -1,4 +1,4 @@
-.tri-toggle-wrap {
+.ng-toggle-wrap {
     display:inline-block;
     margin:3px;
     position:relative;
@@ -8,21 +8,21 @@
     -webkit-transform: translateZ(0) scale(1.0, 1.0);
     z-index:0;
 }
-.tri-toggle-wrap:hover {
+.ng-toggle-wrap:hover {
     z-index:1;
 }
-.tri-toggle-wrap.vertical {
+.ng-toggle-wrap.vertical {
     height: 62px;
 }
-.tri-toggle-wrap .tri-toggle-switch {
+.ng-toggle-wrap .ng-toggle-switch {
     -webkit-transform: translate(-50%, -50%);
     transform:translate(-50%, -50%);
 }
-.tri-toggle-wrap.vertical .tri-toggle-switch {
+.ng-toggle-wrap.vertical .ng-toggle-switch {
     -webkit-transform: translate(-50%, -50%) rotate(-90deg);
     transform:translate(-50%, -50%) rotate(-90deg);
 }
-.tri-toggle-switch {
+.ng-toggle-switch {
     position:absolute;
     left:50%;
     top:50%;
@@ -35,25 +35,25 @@
     transition:background-color .25s ease;
     cursor:pointer;
 }
-.tri-toggle-switch.true {
+.ng-toggle-switch.true {
     background-color:#68C527;
 }
-.tri-toggle-switch.false {
+.ng-toggle-switch.false {
     background-color:#ff4d35;
 }
-.tri-toggle-false {
+.ng-toggle-false {
     position:absolute;
     left:0;
     width:50%;
     height:100%;
 }
-.tri-toggle-true {
+.ng-toggle-true {
     position:absolute;
     right:0;
     width:50%;
     height:100%;
 }
-.tri-toggle-handle {
+.ng-toggle-handle {
     width:24px;
     height:24px;
     border-radius:100%;
@@ -66,13 +66,13 @@
     -webkit-transition:all .2s ease-out;
     transition:all .2s ease-out;
 }
-.tri-toggle-switch.true .tri-toggle-handle {
+.ng-toggle-switch.true .ng-toggle-handle {
     left:29px;
 }
-.tri-toggle-switch.false .tri-toggle-handle {
+.ng-toggle-switch.false .ng-toggle-handle {
     left:3px;
 }
-.tri-toggle-tooltip {
+.ng-toggle-tooltip {
     display: inline-block;
     position: absolute;
     left: 100%;
@@ -92,10 +92,10 @@
     opacity:0;
     pointer-events:none;
 }
-.tri-toggle-wrap:hover .tri-toggle-tooltip {
+.ng-toggle-wrap:hover .ng-toggle-tooltip {
     opacity:1;
 }
-.tri-toggle-tooltip:before {
+.ng-toggle-tooltip:before {
     width: 5px;
     height: 5px;
     border-style: solid;
@@ -109,7 +109,7 @@
     content:'';
     pointer-events:none;
 }
-.tri-toggle-tooltip .active {
+.ng-toggle-tooltip .active {
     color:white;
     box-shadow: 0 0 3px rgba(0, 0, 0, .4);
     -webkit-transition:all .2s ease;
