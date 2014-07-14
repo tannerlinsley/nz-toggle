@@ -34,13 +34,13 @@ ngTriToggle
                         }
                     }
 
-                    /* Change Function (Model Watcher) */
+                    /* ngChange Function */
 
                     if (angular.isDefined(scope.config.change) && !angular.isDefined(scope.ngChange)) {
                         scope.ngChange = scope.config.change;
                     }
 
-                    /* ngToggleChange Function (User Click Watcher) */
+                    /* ngToggleChange Function */
 
                     if (angular.isDefined(scope.config.toggleChange) && !angular.isDefined(scope.ngToggleChange)) {
                         scope.ngToggleChange = scope.config.toggleChange;
@@ -54,8 +54,7 @@ ngTriToggle
 
                     /* Default Value */
 
-                    if (angular.isDefined(scope.config.
-                        default) && !angular.isDefined(scope.ngDefault)) {
+                    if (angular.isDefined(scope.config.default) && !angular.isDefined(scope.ngDefault)) {
                         scope.ngDefault = scope.config.
                         default;
                     }
@@ -290,7 +289,9 @@ ngTriToggle
                         scope.val = scope.ngTrueVal;
                     }
                     if (typeof scope.ngToggleChange != 'undefined') {
-                        scope.ngToggleChange(scope.val);
+                        $timeout(function() {
+                            scope.ngToggleChange(scope.val);
+                        });
                     }
                 };
 
@@ -299,7 +300,9 @@ ngTriToggle
                     updatePosition();
                     updateTooltip();
                     if (typeof scope.ngChange != 'undefined') {
-                        scope.ngChange(scope.val);
+                        $timeout(function() {
+                            scope.ngChange(scope.val);
+                        });
                     }
                 });
 
