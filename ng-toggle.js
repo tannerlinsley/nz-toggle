@@ -6,7 +6,8 @@ ngTriToggle
             replace: true,
             scope: {
                 config: '=?',
-                ngChange: '&',
+                ngChange: '&?',
+                ngToggleChange: '&?',
                 val: '=ngModel',
                 ngDefault: '=?',
                 ngTrueVal: '=?',
@@ -33,10 +34,16 @@ ngTriToggle
                         }
                     }
 
-                    /* onChange Function */
+                    /* Change Function (Model Watcher) */
 
                     if (angular.isDefined(scope.config.change) && !angular.isDefined(scope.ngChange)) {
                         scope.ngChange = scope.config.change;
+                    }
+
+                    /* ngToggleChange Function (User Click Watcher) */
+
+                    if (angular.isDefined(scope.config.toggleChange) && !angular.isDefined(scope.ngToggleChange)) {
+                        scope.ngToggleChange = scope.config.toggleChange;
                     }
 
                     /* Model Binding */
@@ -281,6 +288,9 @@ ngTriToggle
                         scope.val = scope.ngNullVal;
                     } else {
                         scope.val = scope.ngTrueVal;
+                    }
+                    if (typeof scope.ngToggleChange != 'undefined') {
+                        scope.ngToggleChange(scope.val);
                     }
                 };
 
