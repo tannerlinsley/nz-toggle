@@ -8,6 +8,8 @@ __Double and Triple-State Toggle AngularJS Directives__
 
 So, Here is an elegant solution for regular and three-state toggle switches inspired by mobile touch toggles.
 
+[THE DEMO](http://codepen.io/tannerlinsley/pen/uoGfg)
+
 ## Get Started
 
 Install Via Bower
