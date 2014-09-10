@@ -1,5 +1,5 @@
-var ngTriToggle = angular.module('ngTriToggle', []);
-ngTriToggle
+var ngToggle = angular.module('ngToggle', []);
+ngToggle
     .directive('ngToggle', function($timeout) {
         return {
             restrict: 'E',
@@ -35,48 +35,46 @@ ngTriToggle
                     }
 
                     /* ngChange Function */
-
-                    if (angular.isDefined(scope.config.change) && !angular.isDefined(scope.ngChange)) {
+                    if (angular.isDefined(scope.config.change) && !angular.isDefined(attrs.ngChange)) {
                         scope.ngChange = scope.config.change;
                     }
 
                     /* ngToggleChange Function */
 
-                    if (angular.isDefined(scope.config.toggleChange) && !angular.isDefined(scope.ngToggleChange)) {
+                    if (angular.isDefined(scope.config.toggleChange) && !angular.isDefined(attrs.ngToggleChange)) {
                         scope.ngToggleChange = scope.config.toggleChange;
                     }
 
                     /* Model Binding */
 
-                    if (angular.isDefined(scope.config.val) && !angular.isDefined(scope.val)) {
+                    if (angular.isDefined(scope.config.val) && !angular.isDefined(attrs.val)) {
                         scope.val = scope.config.val;
                     }
 
                     /* Default Value */
 
-                    if (angular.isDefined(scope.config.default) && !angular.isDefined(scope.ngDefault)) {
-                        scope.ngDefault = scope.config.
-                        default;
+                    if (angular.isDefined(scope.config.default) && !angular.isDefined(attrs.ngDefault)) {
+                        scope.ngDefault = scope.config.default;
                     }
 
                     /* Values */
 
-                    if (angular.isDefined(scope.config.trueVal) && !angular.isDefined(scope.ngTrueVal)) {
+                    if (angular.isDefined(scope.config.trueVal) && !angular.isDefined(attrs.ngTrueVal)) {
                         scope.ngTrueVal = scope.config.trueVal;
                     }
-                    if (angular.isDefined(scope.config.falseVal) && !angular.isDefined(scope.ngFalseVal)) {
+                    if (angular.isDefined(scope.config.falseVal) && !angular.isDefined(attrs.ngFalseVal)) {
                         scope.ngFalseVal = scope.config.falseVal;
                     }
-                    if (angular.isDefined(scope.config.nullVal) && !angular.isDefined(scope.ngNullVal)) {
+                    if (angular.isDefined(scope.config.nullVal) && !angular.isDefined(attrs.ngNullVal)) {
                         scope.ngNullVal = scope.config.nullVal;
                     }
 
                     /* Width & Height */
 
-                    if (angular.isDefined(scope.config.width) && !angular.isDefined(scope.ngWidth)) {
+                    if (angular.isDefined(scope.config.width) && !angular.isDefined(attrs.ngWidth)) {
                         scope.ngWidth = scope.config.width;
                     }
-                    if (angular.isDefined(scope.config.height) && !angular.isDefined(scope.ngHeight)) {
+                    if (angular.isDefined(scope.config.height) && !angular.isDefined(attrs.ngHeight)) {
                         scope.ngHeight = scope.config.height;
                     }
 
@@ -100,16 +98,16 @@ ngTriToggle
 
                     /* ToolTips */
 
-                    if (angular.isDefined(scope.config.trueTip) && !angular.isDefined(scope.ngTrueTip)) {
+                    if (angular.isDefined(scope.config.trueTip) && !angular.isDefined(attrs.ngTrueTip)) {
                         scope.ngTrueTip = scope.config.trueTip;
                     }
-                    if (angular.isDefined(scope.config.falseTip) && !angular.isDefined(scope.ngFalseTip)) {
+                    if (angular.isDefined(scope.config.falseTip) && !angular.isDefined(attrs.ngFalseTip)) {
                         scope.ngFalseTip = scope.config.falseTip;
                     }
-                    if (angular.isDefined(scope.config.nullTip) && !angular.isDefined(scope.ngNullTip)) {
+                    if (angular.isDefined(scope.config.nullTip) && !angular.isDefined(attrs.ngNullTip)) {
                         scope.ngNullTip = scope.config.nullTip;
                     }
-                    if (!angular.isDefined(scope.ngTrueTip) && !angular.isDefined(scope.ngFalseTip) && !angular.isDefined(scope.ngNullTip)) {
+                    if (!angular.isDefined(scope.ngTrueTip) && !angular.isDefined(attrs.ngFalseTip) && !angular.isDefined(attrs.ngNullTip)) {
                         scope.tooltip = false;
                     } else {
                         scope.tooltip = true;
@@ -133,10 +131,10 @@ ngTriToggle
                 /* Custom Container Size */
 
                 if (angular.isDefined(scope.ngWidth)) {
-                    scope.styleWrap['width'] = scope.ngWidth + 6 + 'px';
+                    scope.styleWrap.width = scope.ngWidth + 6 + 'px';
                 }
                 if (angular.isDefined(scope.ngHeight)) {
-                    scope.styleWrap['height'] = scope.ngHeight + 6 + 'px';
+                    scope.styleWrap.height = scope.ngHeight + 6 + 'px';
                 }
 
                 /* Custom Switch and Handle Size */
@@ -150,12 +148,12 @@ ngTriToggle
                     scope.tooltip3 = scope.ngFalseTip;
 
                     if (angular.isDefined(scope.ngWidth)) {
-                        scope.styleSwitch['height'] = scope.ngWidth + 'px';
-                        scope.styleHandle['height'] = scope.ngWidth - 6 + 'px';
+                        scope.styleSwitch.height = scope.ngWidth + 'px';
+                        scope.styleHandle.height = scope.ngWidth - 6 + 'px';
                     }
                     if (angular.isDefined(scope.ngHeight)) {
-                        scope.styleSwitch['width'] = scope.ngHeight + 'px';
-                        scope.styleHandle['width'] = scope.ngHeight * 0.428 + 'px';
+                        scope.styleSwitch.width = scope.ngHeight + 'px';
+                        scope.styleHandle.width = scope.ngHeight * 0.428 + 'px';
                     }
                 } else {
 
@@ -164,12 +162,12 @@ ngTriToggle
                     scope.tooltip3 = scope.ngTrueTip;
 
                     if (angular.isDefined(scope.ngWidth)) {
-                        scope.styleSwitch['width'] = scope.ngWidth + 'px';
-                        scope.styleHandle['width'] = scope.ngWidth * 0.428 + 'px';
+                        scope.styleSwitch.width = scope.ngWidth + 'px';
+                        scope.styleHandle.width = scope.ngWidth * 0.428 + 'px';
                     }
                     if (angular.isDefined(scope.ngHeight)) {
-                        scope.styleSwitch['height'] = scope.ngHeight + 'px';
-                        scope.styleHandle['height'] = scope.ngHeight - 6 + 'px';
+                        scope.styleSwitch.height = scope.ngHeight + 'px';
+                        scope.styleHandle.height = scope.ngHeight - 6 + 'px';
                     }
                 }
 
@@ -230,25 +228,25 @@ ngTriToggle
                 function updatePosition() {
                     if (scope.val === scope.ngFalseVal) {
                         if (angular.isDefined(scope.ngWidth)) {
-                            scope.styleHandle['left'] = 3 + 'px';
+                            scope.styleHandle.left = 3 + 'px';
                         }
                     } else if (scope.val === scope.ngNullVal) {
                         if (scope.triToggle) {
                             if (angular.isDefined(attrs.vertical) && attrs.vertical) {
                                 if (angular.isDefined(scope.ngHeight)) {
-                                    scope.styleHandle['left'] = scope.ngHeight * 0.22 + 3 + 'px';
+                                    scope.styleHandle.left = scope.ngHeight * 0.22 + 3 + 'px';
                                 }
                             } else if (angular.isDefined(scope.ngWidth)) {
-                                scope.styleHandle['left'] = scope.ngWidth * 0.22 + 3 + 'px';
+                                scope.styleHandle.left = scope.ngWidth * 0.22 + 3 + 'px';
                             }
                         }
                     } else {
                         if (angular.isDefined(attrs.vertical) && attrs.vertical) {
                             if (angular.isDefined(scope.ngHeight)) {
-                                scope.styleHandle['left'] = (scope.ngHeight) * 0.517 + 'px';
+                                scope.styleHandle.left = (scope.ngHeight) * 0.517 + 'px';
                             }
                         } else if (angular.isDefined(scope.ngWidth)) {
-                            scope.styleHandle['left'] = (scope.ngWidth) * 0.517 + 'px';
+                            scope.styleHandle.left = (scope.ngWidth) * 0.517 + 'px';
                         }
                     }
                 }
