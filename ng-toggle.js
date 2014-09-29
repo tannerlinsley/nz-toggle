@@ -6,8 +6,8 @@ ngToggle
             replace: true,
             scope: {
                 config: '=?',
-                ngChange: '&?',
                 ngToggleChange: '&?',
+                ngToggleClick: '&?',
                 val: '=ngModel',
                 ngDefault: '=?',
                 ngTrueVal: '=?',
@@ -34,15 +34,15 @@ ngToggle
                         }
                     }
 
-                    /* ngChange Function */
-                    if (angular.isDefined(scope.config.change) && !angular.isDefined(attrs.ngChange)) {
-                        scope.ngChange = scope.config.change;
+                    /* ngToggleChange Function */
+                    if (angular.isDefined(scope.config.change) && !angular.isDefined(attrs.ngToggleChange)) {
+                        scope.ngToggleChange = scope.config.change;
                     }
 
-                    /* ngToggleChange Function */
+                    /* ngToggleClick Function */
 
-                    if (angular.isDefined(scope.config.toggleChange) && !angular.isDefined(attrs.ngToggleChange)) {
-                        scope.ngToggleChange = scope.config.toggleChange;
+                    if (angular.isDefined(scope.config.toggleClick) && !angular.isDefined(attrs.ngToggleClick)) {
+                        scope.ngToggleClick = scope.config.toggleClick;
                     }
 
                     /* Model Binding */
@@ -225,12 +225,22 @@ ngToggle
 
                 /* Custom Position Maintenance */
 
+                function equals(val, valtwo) {
+                    if (typeof val == 'object' && typeof valtwo == 'object') {
+                        if (JSON.stringify(val) === JSON.stringify(valtwo)) {
+                            return true;
+                        }
+                        return false;
+                    }
+                    return val === valtwo;
+                }
+
                 function updatePosition() {
-                    if (scope.val === scope.ngFalseVal) {
+                    if (equals(scope.val, scope.ngFalseVal)) {
                         if (angular.isDefined(scope.ngWidth)) {
                             scope.styleHandle.left = 3 + 'px';
                         }
-                    } else if (scope.val === scope.ngNullVal) {
+                    } else if (equals(scope.val, scope.ngNullVal)) {
                         if (scope.triToggle) {
                             if (angular.isDefined(attrs.vertical) && attrs.vertical) {
                                 if (angular.isDefined(scope.ngHeight)) {
@@ -286,9 +296,9 @@ ngToggle
                     } else {
                         scope.val = scope.ngTrueVal;
                     }
-                    if (typeof scope.ngToggleChange != 'undefined') {
+                    if (typeof scope.ngToggleClick != 'undefined') {
                         $timeout(function() {
-                            scope.ngToggleChange(scope.val);
+                            scope.ngToggleClick(scope.val);
                         });
                     }
                 };
@@ -297,9 +307,9 @@ ngToggle
                     updateCustomColor();
                     updatePosition();
                     updateTooltip();
-                    if (typeof scope.ngChange != 'undefined') {
+                    if (typeof scope.ngToggleChange != 'undefined') {
                         $timeout(function() {
-                            scope.ngChange(scope.val);
+                            scope.ngToggleChange(scope.val);
                         });
                     }
                 });
