@@ -41,8 +41,8 @@ ngToggle
 
                     /* ngToggleClick Function */
 
-                    if (angular.isDefined(scope.config.toggleClick) && !angular.isDefined(attrs.ngToggleClick)) {
-                        scope.ngToggleClick = scope.config.toggleClick;
+                    if (angular.isDefined(scope.config.click) && !angular.isDefined(attrs.ngToggleClick)) {
+                        scope.ngToggleClick = scope.config.click;
                     }
 
                     /* Model Binding */
