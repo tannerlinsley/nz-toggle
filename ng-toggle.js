@@ -202,45 +202,33 @@ ngToggle
                 /* Custom CSS Color Overrides */
 
                 function updateCustomColor() {
-                    switch (scope.val) {
-                        case scope.ngTrueVal:
-                            if (angular.isDefined(attrs.ngTrueColor)) {
-                                scope.styleSwitch['background-color'] = attrs.ngTrueColor;
-                            }
-                            break;
-                        case scope.ngFalseVal:
-                            if (angular.isDefined(attrs.ngFalseColor)) {
-                                scope.styleSwitch['background-color'] = attrs.ngFalseColor;
-                            }
-                            break;
-                        default:
-                            if (scope.triToggle) {
-                                if (angular.isDefined(attrs.ngNullColor)) {
-                                    scope.styleSwitch['background-color'] = attrs.ngNullColor;
-                                }
-                            }
-                            break;
+                    if (angular.equals(scope.val, scope.ngTrueVal)) {
+                        if (angular.isDefined(attrs.ngTrueColor)) {
+                            scope.styleSwitch['background-color'] = attrs.ngTrueColor;
+                        }
+                        return;
+                    }
+                    if (angular.equals(scope.val, scope.ngFalseVal)) {
+                        if (angular.isDefined(attrs.ngFalseColor)) {
+                            scope.styleSwitch['background-color'] = attrs.ngFalseColor;
+                        }
+                        return;
+                    }
+                    if (scope.triToggle) {
+                        if (angular.isDefined(attrs.ngNullColor)) {
+                            scope.styleSwitch['background-color'] = attrs.ngNullColor;
+                        }
                     }
                 }
 
                 /* Custom Position Maintenance */
 
-                function equals(val, valtwo) {
-                    if (typeof val == 'object' && typeof valtwo == 'object') {
-                        if (JSON.stringify(val) === JSON.stringify(valtwo)) {
-                            return true;
-                        }
-                        return false;
-                    }
-                    return val === valtwo;
-                }
-
                 function updatePosition() {
-                    if (equals(scope.val, scope.ngFalseVal)) {
+                    if (angular.equals(scope.val, scope.ngFalseVal)) {
                         if (angular.isDefined(scope.ngWidth)) {
                             scope.styleHandle.left = 3 + 'px';
                         }
-                    } else if (equals(scope.val, scope.ngNullVal)) {
+                    } else if (angular.equals(scope.val, scope.ngNullVal)) {
                         if (scope.triToggle) {
                             if (angular.isDefined(attrs.vertical) && attrs.vertical) {
                                 if (angular.isDefined(scope.ngHeight)) {
@@ -267,13 +255,13 @@ ngToggle
                     scope.showTooltip1 = false;
                     scope.showTooltip2 = false;
                     scope.showTooltip3 = false;
-                    if (scope.val === scope.ngTrueVal) {
+                    if (angular.equals(scope.val, scope.ngTrueVal)) {
                         if (scope.vertical) {
                             scope.showTooltip1 = true;
                         } else {
                             scope.showTooltip3 = true;
                         }
-                    } else if (scope.val === scope.ngFalseVal) {
+                    } else if (angular.equals(scope.val, scope.ngFalseVal)) {
                         if (scope.vertical) {
                             scope.showTooltip3 = true;
                         } else {
@@ -303,7 +291,7 @@ ngToggle
                     }
                 };
 
-                scope.$watch('val', function() {
+                scope.$watch('val', function(val) {
                     updateCustomColor();
                     updatePosition();
                     updateTooltip();
@@ -312,7 +300,7 @@ ngToggle
                             scope.ngToggleChange(scope.val);
                         });
                     }
-                });
+                }, true);
 
                 /* Value Configuration */
 
