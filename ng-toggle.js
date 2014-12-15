@@ -18,6 +18,7 @@ ngToggle
                 ngTrueTip: '=?',
                 ngFalseTip: '=?',
                 ngNullTip: '=?',
+                borderRadius: '=?'
             },
             template: '<div class="ng-toggle-wrap" ng-style="styleWrap" ng-class="{\'vertical\': vertical}"><div class="ng-toggle-switch" ng-style="styleSwitch" ng-class="{\'true\': val==ngTrueVal, \'false\': val==ngFalseVal}" ng-click="toggle()"><div class="ng-toggle-false"></div><div class="ng-toggle-true"></div><div class="ng-toggle-handle" ng-style="styleHandle"></div></div><div class="ng-toggle-tooltip" ng-show="tooltip"><span ng-class="{\'active\': showTooltip1}"><span ng-show="tooltip1"></span>{{tooltip1}}&nbsp;&bull;</span><br ng-show="triToggle"><span ng-class="{\'active\': showTooltip2}" ng-show="triToggle"><span ng-show="tooltip2"></span>{{tooltip2}}&nbsp;&bull;</span><br><span ng-class="{\'active\': showTooltip3}"><span ng-show="tooltip3"></span>{{tooltip3}}&nbsp;&bull;</span></div></div>',
             link: function(scope, element, attrs) {
@@ -112,6 +113,12 @@ ngToggle
                     } else {
                         scope.tooltip = true;
                     }
+
+                    /* Border Radius */
+
+                    if (angular.isDefined(scope.config.borderRadius) && !angular.isDefined(attrs.borderRadius)) {
+                        scope.borderRadius = scope.config.borderRadius;
+                    }
                 }
 
                 /* Default Styling */
@@ -173,31 +180,37 @@ ngToggle
 
                 /* Custom Border Radii */
 
-                if (angular.isDefined(scope.ngWidth) && angular.isDefined(scope.ngHeight)) {
-                    if (scope.ngWidth <= scope.ngHeight) {
-                        scope.styleSwitch['border-radius'] = (scope.ngHeight + 6) / 2 + 'px';
-                        scope.styleHandle['border-radius'] = scope.ngHeight / 2 + 'px';
-                    } else {
-                        scope.styleSwitch['border-radius'] = (scope.ngWidth + 6) / 2 + 'px';
-                        scope.styleHandle['border-radius'] = scope.ngWidth / 2 + 'px';
-                    }
-                } else if (angular.isDefined(scope.ngWidth)) {
-                    if (scope.ngWidth <= 30) {
-                        scope.styleSwitch['border-radius'] = 18 + 'px';
-                        scope.styleHandle['border-radius'] = 15 + 'px';
-                    } else {
-                        scope.styleSwitch['border-radius'] = (scope.ngWidth + 6) / 2 + 'px';
-                        scope.styleHandle['border-radius'] = scope.ngWidth / 2 + 'px';
-                    }
-                } else if (angular.isDefined(scope.ngHeight)) {
-                    if (scope.ngHeight >= 56) {
-                        scope.styleSwitch['border-radius'] = 31 + 'px';
-                        scope.styleHandle['border-radius'] = 28 + 'px';
-                    } else {
-                        scope.styleSwitch['border-radius'] = (scope.ngHeight + 6) / 2 + 'px';
-                        scope.styleHandle['border-radius'] = scope.ngHeight / 2 + 'px';
+                if (angular.isDefined(scope.borderRadius)) {
+                    scope.styleSwitch['border-radius'] = scope.borderRadius + 'px';
+                    scope.styleHandle['border-radius'] = scope.borderRadius + 'px';
+                } else {
+                    if (angular.isDefined(scope.ngWidth) && angular.isDefined(scope.ngHeight)) {
+                        if (scope.ngWidth <= scope.ngHeight) {
+                            scope.styleSwitch['border-radius'] = (scope.ngHeight + 6) / 2 + 'px';
+                            scope.styleHandle['border-radius'] = scope.ngHeight / 2 + 'px';
+                        } else {
+                            scope.styleSwitch['border-radius'] = (scope.ngWidth + 6) / 2 + 'px';
+                            scope.styleHandle['border-radius'] = scope.ngWidth / 2 + 'px';
+                        }
+                    } else if (angular.isDefined(scope.ngWidth)) {
+                        if (scope.ngWidth <= 30) {
+                            scope.styleSwitch['border-radius'] = 18 + 'px';
+                            scope.styleHandle['border-radius'] = 15 + 'px';
+                        } else {
+                            scope.styleSwitch['border-radius'] = (scope.ngWidth + 6) / 2 + 'px';
+                            scope.styleHandle['border-radius'] = scope.ngWidth / 2 + 'px';
+                        }
+                    } else if (angular.isDefined(scope.ngHeight)) {
+                        if (scope.ngHeight >= 56) {
+                            scope.styleSwitch['border-radius'] = 31 + 'px';
+                            scope.styleHandle['border-radius'] = 28 + 'px';
+                        } else {
+                            scope.styleSwitch['border-radius'] = (scope.ngHeight + 6) / 2 + 'px';
+                            scope.styleHandle['border-radius'] = scope.ngHeight / 2 + 'px';
+                        }
                     }
                 }
+
 
                 /* Custom CSS Color Overrides */
 
