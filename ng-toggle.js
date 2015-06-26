@@ -1,6 +1,6 @@
 var ngToggle = angular.module('ngToggle', []);
 ngToggle
-    .directive('ngToggle', function($timeout) {
+    .directive('ngToggle', ['$timeout', function($timeout) {
         return {
             restrict: 'E',
             replace: true,
@@ -335,4 +335,4 @@ ngToggle
                 }
             },
         };
-    });
+    }]);
