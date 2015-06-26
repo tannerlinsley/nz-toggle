@@ -1,0 +1,19 @@
+{
+  "name": "ng-toggle",
+  "version": "1.0.0",
+  "description": "__Double and Triple-State Toggle AngularJS Directives__",
+  "main": "ng-toggle.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tannerlinsley/ng-toggle.git"
+  },
+  "author": "Tanner Linsley <tannerlinsley@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tannerlinsley/ng-toggle/issues"
+  },
+  "homepage": "https://github.com/tannerlinsley/ng-toggle"
+}
