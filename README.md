@@ -1,52 +1,53 @@
-# ng-toggle
+# nz-toggle
 
-__Double and Triple-State Toggle AngularJS Directives__
+__Double and Triple-State Toggle for Angular__
 
-1. Toggles should be prettier, and not restricted to checkbox functionality.
-2. Sometimes a checkbox should have more than 2 states.
-3. Indeterminate checkboxes are cool for nested checklists, but simply a fancy way to say `false`.
+## Features
+- Native checkboxes are ugly, inconsistent, and involve insane CSS tweaks to style. nz-toggle is a simple directive that relieves all of the pain of styling `<input type="checkbox">`
+- Indeterminate checkboxes are great for nested checklists, but emit a `false` value in that state. nz-toggle's `tri-toggle` mode fixes this by truthfully providing 3 separate value states.
+- Tooltips for the tri-toggle impaired.
 
-So, Here is an elegant solution for regular and three-state toggle switches inspired by mobile touch toggles.
-
-[THE DEMO](http://codepen.io/tannerlinsley/pen/uoGfg)
+[Demo](http://codepen.io/tannerlinsley/pen/uoGfg)
 
 ## Get Started
 
-Install Via Bower
+Install via NPM or Bower
 
-`bower install -S ngToggle`
+`npm install --save nz-toggle`
+`bower install --save nz-toggle`
 
 Include Files
 
 ```html
-<link rel="stylesheet" type="text/css" href="/assets/bower_components/ngTriToggle/ng-toggle.css" />
-<script type="text/javascript" src="/assets/bower_components/ngTriToggle/ng-toggle.js"></script>
+<link rel="stylesheet" type="text/css" href=".../nz-toggle/dist/nz-toggle.min.css" />
+<script type="text/javascript" src=".../nz-toggle/dist/nz-toggle.min.js"></script>
 ```
 
-## Using the directive
+## Using the directive 
 
 ```html
-<ng-toggle 
+<nz-toggle 
   tri-toggle 
-  ng-change="myFunction()" 
+  on-toggle="myFunction()" 
   ng-model="value">
-</ng-toggle> 
+</nz-toggle> 
 
-<!-- Default Values : true-val = 1, false-val = 0, no-val = null; -->
+<!-- Default Values : false-val = 0, null-val = null, true-val = true; -->
 ```
 
 ```html
-<ng-toggle 
+<nz-toggle 
   tri-toggle 
-  ng-change="myFunction()" 
+  on-toggle="myFunction()" 
   ng-model="value" 
-  ng-true-val="'myString'" 
-  ng-false-val="0" 
-  ng-no-val="-1">
-</ng-toggle> 
+  val-true="'myString'" 
+  val-false="0" 
+  val-null="-1">
+</nz-toggle> 
 
-<!-- Custom Values : true-val = true, false-val = -1, no-val = 'Nothing Selected!' -->
 ```
+
+Visit the [THE DEMO](http://codepen.io/tannerlinsley/pen/uoGfg) for more usage information
 
 ## License
 
