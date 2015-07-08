@@ -47,7 +47,7 @@ Include Files
 
 ```
 
-Visit the [THE DEMO](http://codepen.io/tannerlinsley/pen/uoGfg) for more usage information
+Visit the [demo](http://codepen.io/tannerlinsley/pen/uoGfg) for more usage information
 
 ## License
 
