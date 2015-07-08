@@ -39,8 +39,8 @@
                 // Defaults
                 var defaults = {
                     vertical: false,
-                    valTrue: 1,
-                    valFalse: 0,
+                    valTrue: true,
+                    valFalse: false,
                     valNull: null,
                     width: 50,
                     height: 25,
