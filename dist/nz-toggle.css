@@ -71,8 +71,8 @@
 }
 .nz-toggle-wrap.horizontal.false .nz-toggle-handle {
   left: 0;
-  -webkit-transform: translateX(0);
-  transform: translateX(0);
+  -webkit-transform: translateX(0%);
+  transform: translateX(0%);
 }
 .nz-toggle-wrap.horizontal.null .nz-toggle-handle {
   left: 50%;
@@ -137,9 +137,9 @@
   transform: translateY(-50%);
 }
 .nz-toggle-wrap.vertical.true .nz-toggle-handle {
-  top: 0;
-  -webkit-transform: translateY(0);
-  transform: translateY(0);
+  top: 0%;
+  -webkit-transform: translateY(0%);
+  transform: translateY(0%);
 }
 .nz-toggle-wrap.vertical .nz-toggle-tooltip {
   left: 100%;
