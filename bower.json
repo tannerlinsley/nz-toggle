@@ -1,7 +1,7 @@
 {
     "name": "nz-toggle",
     "main": ["dist/nz-toggle.js", "dist/nz-toggle.css"],
-    "version": "2.0.0",
+    "version": "2.1.0",
     "homepage": "https://github.com/nozzle/nz-toggle",
     "authors": [
         "tannerlinsley"
