@@ -11,7 +11,7 @@
                 onToggle: '&'
             },
             template: [
-                '<div class="nz-toggle-wrap" ng-class="getStyle()" ng-style="wrapStyle" ng-click="toggle()">',
+                '<div class="nz-toggle-wrap" ng-class="getStyle()" ng-style="wrapStyle">',
                 '   <div class="nz-toggle">',
                 '       <div class="nz-toggle-handle"></div>',
                 '   </div>',
@@ -31,6 +31,29 @@
                 '</div>',
             ].join(''),
             link: function(scope, el, attrs) {
+
+                // Child Elements
+                var elToggle = angular.element(el[0].querySelector('.nz-toggle-handle'));
+
+                // Interface States
+                var pressed,
+                    current,
+                    change,
+                    movement,
+                    now,
+                    styleMap = {
+                        horizontal: {
+                            'false': 0,
+                            'null': 50,
+                            'true': 100
+                        },
+                        vertical: {
+                            'false': 100,
+                            'null': 50,
+                            'true': 0
+                        }
+                    };
+
 
                 // Helpers
                 var has = angular.isDefined,
@@ -94,6 +117,149 @@
                             }
                         }
                     }, true);
+
+                    // Interaction events
+                    addEventListeners(el[0], 'mousedown touchstart', onToggleTouch);
+                    addEventListeners(el[0], 'click', onClick);
+
+                    // Cleanup
+                    vm.$on('$destroy', function() {
+                        removeEventListeners(el[0], 'mousedown touchstart', onToggleTouch);
+                        removeEventListeners(window, 'mousemove touchmove', onToggleMove);
+                        removeEventListeners(window, 'mouseup touchend', onToggleRelease);
+                        removeEventListeners(el[0], 'click', onClick);
+
+                    });
+                }
+
+                function onClick(e) {
+                    if (movement < 1) {
+                        toggle();
+                    }
+                }
+
+                function onToggleTouch(e) {
+
+                    e = e ? e : window.event;
+
+                    pressed = {
+                        x: e.pageX || e.touches[0].pageX,
+                        y: e.pageY || e.touches[0].pageY
+                    };
+
+                    movement = 0;
+
+                    elToggle.css('transition', '0s');
+
+                    addEventListeners(window, 'mousemove touchmove', onToggleMove);
+                    addEventListeners(window, 'mouseup touchend', onToggleRelease);
+
+                    e.stopPropagation();
+                    e.returnValue = false;
+                    return false;
+                }
+
+                function onToggleMove(e) {
+
+                    e = e ? e : window.event;
+
+                    var v = (e.pageY || e.touches[0].pageY) - pressed.y,
+                        h = (e.pageX || e.touches[0].pageX) - pressed.x,
+
+                        cHeight = el[0].offsetHeight,
+                        cWidth = el[0].offsetWidth,
+
+                        hp = v / (cHeight / 2) * 100,
+                        wp = h / (cWidth / 2) * 100;
+
+                    if (vm.vertical) {
+                        current = parseFloat(styleMap.vertical[vm.state]);
+                        change = Math.max(Math.min(parseFloat(hp + current), 100), 0);
+                        now = current + (change - current) / 2;
+
+                        elToggle.css('top', now + '%');
+                    } else {
+                        current = parseFloat(styleMap.horizontal[vm.state]);
+                        change = Math.max(Math.min(parseFloat(wp + current), 100), 0);
+                        now = current + (change - current) / 2;
+
+                        elToggle.css('left', now + '%');
+                    }
+
+                    movement = Math.max(movement, Math.max(Math.abs(v), Math.abs(h)));
+
+                    e.stopPropagation();
+                    e.returnValue = false;
+                    return false;
+
+                }
+
+                function onToggleRelease(e) {
+
+                    e = e ? e : window.event;
+
+                    pressed = false;
+
+                    vm.$apply(function() {
+                        if (movement < 1 && e.type == 'mouseup') {
+                            return;
+                        }
+                        if (movement < 1 && e.type == 'touchend') {
+                            toggle();
+                            return;
+                        }
+                        if (vm.triToggle) {
+                            if (vm.vertical) {
+                                if (change > 73) {
+                                    toggle('false');
+                                    return;
+                                }
+                                if (change > 27) {
+                                    toggle('null');
+                                    return;
+                                }
+                                toggle('true');
+                                return;
+                            }
+                            if (change < 27) {
+                                toggle('false');
+                                return;
+                            }
+                            if (change < 73) {
+                                toggle('null');
+                                return;
+                            }
+                            toggle('true');
+                            return;
+                        }
+                        if (vm.vertical) {
+                            if (change > 50) {
+                                toggle('false');
+                                return;
+                            }
+                            toggle('true');
+                            return;
+                        }
+                        if (change < 50) {
+                            toggle('false');
+                            return;
+                        }
+                        toggle('true');
+                        return;
+                    });
+
+                    elToggle.css({
+                        top: '',
+                        left: '',
+                        transition: ''
+                    });
+
+                    removeEventListeners(window, 'mousemove touchmove', onToggleMove);
+                    removeEventListeners(window, 'mouseup touchend', onToggleRelease);
+
+                    e.stopPropagation();
+                    e.returnValue = false;
+                    return false;
                 }
 
                 function parseOptions() {
@@ -211,22 +377,45 @@
                     vm.showTooltip2 = true;
                 }
 
-                /* Logic */
+                function toggle(state) {
+                    $timeout(function() {
+                        if (!state) {
+                            if (vm.state == 'false') {
+                                vm.ngModel = vm.triToggle ? vm.valNull : vm.valTrue;
+                                return;
+                            } else if (vm.state == 'null') {
+                                vm.ngModel = vm.valTrue;
+                                return;
+                            } else {
+                                vm.ngModel = vm.valFalse;
+                            }
+                        } else {
+                            vm.state = state;
+                            if (state === 'false') {
+                                vm.ngModel = vm.valFalse;
+                                return;
+                            } else if (state === 'null') {
+                                vm.ngModel = vm.valNull;
+                                return;
+                            } else {
+                                vm.ngModel = vm.valTrue;
+                            }
+                        }
+                    });
+                }
 
-                function toggle() {
-
-                    if (vm.state == 'false') {
-                        vm.ngModel = vm.triToggle ? vm.valNull : vm.valTrue;
-                        return;
+                function addEventListeners(el, s, fn) {
+                    var evts = s.split(' ');
+                    for (var i = 0, iLen = evts.length; i < iLen; i++) {
+                        el.addEventListener(evts[i], fn, false);
                     }
+                }
 
-                    if (vm.state == 'null') {
-                        vm.ngModel = vm.valTrue;
-                        return;
+                function removeEventListeners(el, s, fn) {
+                    var evts = s.split(' ');
+                    for (var i = 0, iLen = evts.length; i < iLen; i++) {
+                        el.removeEventListener(evts[i], fn, false);
                     }
-
-                    vm.ngModel = vm.valFalse;
-
                 }
             },
         };
