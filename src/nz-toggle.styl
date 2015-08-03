@@ -74,30 +74,15 @@ vendor-prefixes ?= webkit official
         .nz-toggle-tooltip
             bottom: 100%
             left: 50%
-            transform: translate(-50%, 0px) scale(.85)
+            transform: translate(-50%, 0) scale(.85)
             &:before
                 left: 50%
                 top: 100%
                 transform: translateX(-50%)
                 border-left: 5px solid transparent
                 border-right: 5px solid transparent
-                border-top: 5px solid rgba(0,0,0,.8)
                 border-bottom: 5px solid transparent
-    &.tip-bottom
-        .nz-toggle-tooltip
-            bottom:initial
-            top: 100%
-            left: 50%
-            transform: translate(-50%, 0px) scale(.85)
-            &:before
-                top: initial
-                left: 50%
-                bottom: 100%
-                transform: translateX(-50%)
-                border-left: 5px solid transparent
-                border-right: 5px solid transparent
-                border-bottom: 5px solid rgba(0,0,0,.8)
-                border-top: 5px solid transparent
+                border-top: 5px solid rgba(0,0,0,.8)
     &.vertical
         .nz-toggle-handle
             width:100%
@@ -121,7 +106,7 @@ vendor-prefixes ?= webkit official
             left: 100%
             top: 50%
             transform: translate(0, -50%) scale(.85)
-            text-align: left
+            text-align: right
             &:before
                 top: 50%
                 right: 100%
@@ -129,13 +114,47 @@ vendor-prefixes ?= webkit official
                 border-top: 5px solid transparent
                 border-bottom: 5px solid transparent
                 border-right: 5px solid rgba(0,0,0,.8)
+                border-left: 5px solid transparent
+    &.tip-bottom
+        .nz-toggle-tooltip
+            top: 100%            
+            right: initial
+            bottom: initial
+            left: 50%
+            transform: translate(-50%, 0) scale(.85)
+            &:before
+                top: initial
+                left: 50%
+                bottom: 100%
+                transform: translateX(-50%)
+                border-left: 5px solid transparent
+                border-right: 5px solid transparent
+                border-bottom: 5px solid rgba(0,0,0,.8)
+                border-top: 5px solid transparent
+    &.tip-top
+        .nz-toggle-tooltip
+            top: initial  
+            right: initial
+            bottom: 100%
+            left: 50%
+            transform: translate(-50%, 0) scale(.85)
+            &:before
+                top: initial
+                left: 50%
+                top: 100%
+                transform: translateX(-50%)
+                border-left: 5px solid transparent
+                border-right: 5px solid transparent
+                border-bottom: 5px solid transparent
+                border-top: 5px solid rgba(0,0,0,.8)
     &.tip-left
         .nz-toggle-tooltip
-            left: initial
+            top: 50%  
             right: 100%
-            top: 50%
-            transform: translate(0, -50%) scale(.85)
+            bottom: initial
+            left: initial
             text-align: right
+            transform: translate(0, -50%) scale(.85)
             &:before
                 right: initial
                 top: 50%
@@ -145,7 +164,24 @@ vendor-prefixes ?= webkit official
                 border-bottom: 5px solid transparent
                 border-left: 5px solid rgba(0,0,0,.8)
                 border-right:  5px solid transparent
-                    
+
+    &.tip-right
+        .nz-toggle-tooltip
+            top: 50%  
+            right: initial
+            bottom: initial
+            left: 100%
+            text-align: right
+            transform: translate(0, -50%) scale(.85)
+            &:before
+                left: initial
+                top: 50%
+                right: 100%
+                transform: translateY(-50%)
+                border-top: 5px solid transparent
+                border-bottom: 5px solid transparent
+                border-left: 5px solid transparent
+                border-right:  5px solid rgba(0,0,0,.8)
     &.square
         border-radius:2px
         .nz-toggle-handle
@@ -160,9 +196,15 @@ vendor-prefixes ?= webkit official
         &.vertical
             .nz-toggle-tooltip
                 transform: translate(7px, -50%) scale(1)
-        &.horizontal.tip-bottom
+        &.tip-bottom
             .nz-toggle-tooltip
                 transform: translate(-50%, 7px) scale(1)
-        &.vertical.tip-left
+        &.tip-top
+            .nz-toggle-tooltip
+                transform: translate(-50%, -7px) scale(1)
+        &.tip-left
             .nz-toggle-tooltip
                 transform: translate(-7px, -50%) scale(1)
+        &.tip-right
+            .nz-toggle-tooltip
+                transform: translate(7px, -50%) scale(1)
