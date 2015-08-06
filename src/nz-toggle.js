@@ -1,7 +1,7 @@
 (function() {
     var module = angular.module('nzToggle', []);
 
-    module.directive('nzToggle', function($timeout) {
+    module.directive('nzToggle', ['$timeout', function($timeout) {
         return {
             restrict: 'E',
             replace: true,
@@ -419,5 +419,5 @@
                 }
             },
         };
-    });
+    }]);
 })();
