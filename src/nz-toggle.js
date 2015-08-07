@@ -8,7 +8,8 @@
             scope: {
                 config: '=?',
                 ngModel: '=',
-                onToggle: '&'
+                onToggle: '&',
+                ngDisabled: '=',
             },
             template: [
                 '<div class="nz-toggle-wrap" ng-class="getStyle()" ng-style="wrapStyle">',
@@ -139,6 +140,7 @@
                 }
 
                 function onToggleTouch(e) {
+                    if (vm.ngDisabled) return;
 
                     e = e ? e : window.event;
 
@@ -378,6 +380,8 @@
                 }
 
                 function toggle(state) {
+                    if (vm.ngDisabled) return;
+
                     $timeout(function() {
                         if (!state) {
                             if (vm.state == 'false') {
