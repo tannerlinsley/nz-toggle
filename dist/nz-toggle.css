@@ -19,6 +19,12 @@
   position: relative;
   cursor: pointer;
 }
+.nz-toggle-wrap[disabled] .nz-toggle {
+  cursor: default;
+  opacity: 0.5;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+  filter: alpha(opacity=50);
+}
 /* Handle */
 .nz-toggle-handle {
   -webkit-border-radius: 20px;
@@ -87,8 +93,8 @@
 .nz-toggle-wrap.horizontal .nz-toggle-tooltip {
   bottom: 100%;
   left: 50%;
-  -webkit-transform: translate(-50%, 0px) scale(0.85);
-  transform: translate(-50%, 0px) scale(0.85);
+  -webkit-transform: translate(-50%, 0) scale(0.85);
+  transform: translate(-50%, 0) scale(0.85);
 }
 .nz-toggle-wrap.horizontal .nz-toggle-tooltip:before {
   left: 50%;
@@ -97,26 +103,8 @@
   transform: translateX(-50%);
   border-left: 5px solid transparent;
   border-right: 5px solid transparent;
-  border-top: 5px solid rgba(0,0,0,0.8);
   border-bottom: 5px solid transparent;
-}
-.nz-toggle-wrap.tip-bottom .nz-toggle-tooltip {
-  bottom: initial;
-  top: 100%;
-  left: 50%;
-  -webkit-transform: translate(-50%, 0px) scale(0.85);
-  transform: translate(-50%, 0px) scale(0.85);
-}
-.nz-toggle-wrap.tip-bottom .nz-toggle-tooltip:before {
-  top: initial;
-  left: 50%;
-  bottom: 100%;
-  -webkit-transform: translateX(-50%);
-  transform: translateX(-50%);
-  border-left: 5px solid transparent;
-  border-right: 5px solid transparent;
-  border-bottom: 5px solid rgba(0,0,0,0.8);
-  border-top: 5px solid transparent;
+  border-top: 5px solid rgba(0,0,0,0.8);
 }
 .nz-toggle-wrap.vertical .nz-toggle-handle {
   width: 100%;
@@ -146,7 +134,7 @@
   top: 50%;
   -webkit-transform: translate(0, -50%) scale(0.85);
   transform: translate(0, -50%) scale(0.85);
-  text-align: left;
+  text-align: right;
 }
 .nz-toggle-wrap.vertical .nz-toggle-tooltip:before {
   top: 50%;
@@ -156,14 +144,54 @@
   border-top: 5px solid transparent;
   border-bottom: 5px solid transparent;
   border-right: 5px solid rgba(0,0,0,0.8);
+  border-left: 5px solid transparent;
+}
+.nz-toggle-wrap.tip-bottom .nz-toggle-tooltip {
+  top: 100%;
+  right: initial;
+  bottom: initial;
+  left: 50%;
+  -webkit-transform: translate(-50%, 0) scale(0.85);
+  transform: translate(-50%, 0) scale(0.85);
+}
+.nz-toggle-wrap.tip-bottom .nz-toggle-tooltip:before {
+  top: initial;
+  left: 50%;
+  bottom: 100%;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-bottom: 5px solid rgba(0,0,0,0.8);
+  border-top: 5px solid transparent;
+}
+.nz-toggle-wrap.tip-top .nz-toggle-tooltip {
+  top: initial;
+  right: initial;
+  bottom: 100%;
+  left: 50%;
+  -webkit-transform: translate(-50%, 0) scale(0.85);
+  transform: translate(-50%, 0) scale(0.85);
+}
+.nz-toggle-wrap.tip-top .nz-toggle-tooltip:before {
+  top: initial;
+  left: 50%;
+  top: 100%;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  border-top: 5px solid rgba(0,0,0,0.8);
 }
 .nz-toggle-wrap.tip-left .nz-toggle-tooltip {
-  left: initial;
-  right: 100%;
   top: 50%;
+  right: 100%;
+  bottom: initial;
+  left: initial;
+  text-align: right;
   -webkit-transform: translate(0, -50%) scale(0.85);
   transform: translate(0, -50%) scale(0.85);
-  text-align: right;
 }
 .nz-toggle-wrap.tip-left .nz-toggle-tooltip:before {
   right: initial;
@@ -175,6 +203,26 @@
   border-bottom: 5px solid transparent;
   border-left: 5px solid rgba(0,0,0,0.8);
   border-right: 5px solid transparent;
+}
+.nz-toggle-wrap.tip-right .nz-toggle-tooltip {
+  top: 50%;
+  right: initial;
+  bottom: initial;
+  left: 100%;
+  text-align: right;
+  -webkit-transform: translate(0, -50%) scale(0.85);
+  transform: translate(0, -50%) scale(0.85);
+}
+.nz-toggle-wrap.tip-right .nz-toggle-tooltip:before {
+  left: initial;
+  top: 50%;
+  right: 100%;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  border-left: 5px solid transparent;
+  border-right: 5px solid rgba(0,0,0,0.8);
 }
 .nz-toggle-wrap.square {
   -webkit-border-radius: 2px;
@@ -197,11 +245,19 @@
   -webkit-transform: translate(7px, -50%) scale(1);
   transform: translate(7px, -50%) scale(1);
 }
-.nz-toggle-wrap:hover.horizontal.tip-bottom .nz-toggle-tooltip {
+.nz-toggle-wrap:hover.tip-bottom .nz-toggle-tooltip {
   -webkit-transform: translate(-50%, 7px) scale(1);
   transform: translate(-50%, 7px) scale(1);
 }
-.nz-toggle-wrap:hover.vertical.tip-left .nz-toggle-tooltip {
+.nz-toggle-wrap:hover.tip-top .nz-toggle-tooltip {
+  -webkit-transform: translate(-50%, -7px) scale(1);
+  transform: translate(-50%, -7px) scale(1);
+}
+.nz-toggle-wrap:hover.tip-left .nz-toggle-tooltip {
   -webkit-transform: translate(-7px, -50%) scale(1);
   transform: translate(-7px, -50%) scale(1);
+}
+.nz-toggle-wrap:hover.tip-right .nz-toggle-tooltip {
+  -webkit-transform: translate(7px, -50%) scale(1);
+  transform: translate(7px, -50%) scale(1);
 }
