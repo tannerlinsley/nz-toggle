@@ -287,13 +287,23 @@
                         'colorFalse',
                         'colorNull',
                         'colorTrue',
+                    ], function(prop) {
+                        if (has(attrs[prop])) {
+                            vm[prop] = vm.$eval(attrs[prop]);
+                        }
+                    });
+
+                    // Dynamic attribute overrides
+                    angular.forEach([
                         /* ToolTips */
                         'tipTrue',
                         'tipFalse',
                         'tipNull',
                     ], function(prop) {
                         if (has(attrs[prop])) {
-                            vm[prop] = vm.$eval(attrs[prop]);
+                            vm.$watch(attrs[prop], function(val) {
+                                vm[prop] = val;
+                            })
                         }
                     });
 
