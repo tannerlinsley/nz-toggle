@@ -1,6 +1,6 @@
 {
     "name": "nz-toggle",
-    "version": "2.1.0",
+    "version": "2.2.1",
     "description": "__Double and Triple-State Toggle for AngularJS__",
     "main": ["dist/nz-toggle.js", "dist/nz-toggle.css"],
     "scripts": {
