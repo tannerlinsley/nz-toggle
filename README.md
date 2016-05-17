@@ -9,7 +9,7 @@ __Double and Triple-State Toggle for Angular__
 - Indeterminate checkboxes are great for nested checklists, but emit a `false` value in that state. nz-toggle's `tri-toggle` mode fixes this by truthfully providing 3 separate value states.
 - Tooltips for the tri-toggle impaired.
 
-[Demo](http://codepen.io/anon/pen/yNjyME)
+[Demo](http://codepen.io/justckr/pen/eZaKvO)
 
 ## Get Started
 
@@ -55,7 +55,7 @@ var app = angular.module('app', ['nzToggle']);
 
 ```
 
-Visit the [demo](http://codepen.io/anon/pen/yNjyME) for more usage information
+Visit the [demo](http://codepen.io/justckr/pen/eZaKvO) for more usage information
 
 ## License
 
