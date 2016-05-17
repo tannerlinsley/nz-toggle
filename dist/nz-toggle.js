@@ -69,9 +69,9 @@
                     width: 50,
                     height: 25,
                     padding: 3,
-                    colorTrue: '#60BD68',
-                    colorFalse: '#F15854',
-                    colorNull: '#DDD',
+                    colorTrue: null,
+                    colorFalse: null,
+                    colorNull: null,
                     tooltip: false,
                 };
 
@@ -357,7 +357,9 @@
 
                     // Truthy
                     if (angular.equals(vm.ngModel, vm.valTrue)) {
-                        vm.wrapStyle.backgroundColor = vm.colorTrue;
+                        if (null != vm.colorTrue) {
+                            vm.wrapStyle.backgroundColor = vm.colorTrue;
+                        }
                         vm.state = 'true';
 
                         if (vm.vertical) {
@@ -372,7 +374,9 @@
                     // False
                     if (angular.equals(vm.ngModel, vm.valFalse)) {
                         vm.state = 'false';
-                        vm.wrapStyle.backgroundColor = vm.colorFalse;
+                        if (null != vm.colorFalse) {
+                          vm.wrapStyle.backgroundColor = vm.colorFalse;
+                        }
 
                         if (vm.vertical) {
                             vm.showTooltip3 = true;
@@ -385,7 +389,9 @@
 
                     // Must be the middle
                     vm.state = 'null';
-                    vm.wrapStyle.backgroundColor = vm.colorNull;
+                    if (null != vm.colorNull) {
+                        vm.wrapStyle.backgroundColor = vm.colorNull;
+                    }
                     vm.showTooltip2 = true;
                 }
 

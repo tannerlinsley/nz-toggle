@@ -67,6 +67,15 @@
 .nz-toggle-tooltip span.active {
   color: #fff;
 }
+.nz-toggle-wrap.true {
+  background-color: #60bd68;
+}
+.nz-toggle-wrap.false {
+  background-color: #f15854;
+}
+.nz-toggle-wrap.null {
+  background-color: #ddd;
+}
 .nz-toggle-wrap.horizontal .nz-toggle-handle {
   height: 100%;
   width: 50%;
